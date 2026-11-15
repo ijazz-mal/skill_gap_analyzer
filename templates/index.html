@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Skill Gap Analyzer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700&family=DM+Sans:wght@400;500;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <div class="brand">
+        <svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true">
+          <rect x="3" y="14" width="6" height="11" fill="#0B7A5B" />
+          <rect x="11" y="8" width="6" height="17" fill="#0B7A5B" />
+          <rect x="19" y="3" width="6" height="22" fill="#F2B01E" />
+        </svg>
+        <span>Skill Gap Analyzer</span>
+      </div>
+      <nav class="nav" aria-label="Main">
+        <a href="#how">How it works</a>
+        <a href="#signup">Why sign up</a>
+        <a href="#about">About us</a>
+        <a href="#contact">Contact</a>
+        <a href="login" class="btn btn-outline">Sign in</a>
+        <a href="register.html" class="btn btn-primary">Sign up</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="what">
+        <div class="hero-text">
+          <div class="eyebrow">For African graduates</div>
+          <h1>
+            Your degree says what you studied. Employers ask what you can do.
+          </h1>
+          <p>
+            Skill Gap Analyzer is a web platform for graduates. Tell us your
+            degree and the role you want. We show the skills you are missing,
+            ranked by market demand, and a step-by-step roadmap to close them.
+          </p>
+          <div class="hero-actions">
+            <a href="register.html" class="btn btn-primary btn-lg"
+              >Check my skill gap</a
+            >
+          </div>
+        </div>
+
+        <div class="sample" id="sample">
+          <div class="persona">
+            <div class="avatar" aria-hidden="true">AK</div>
+            <div>
+              <div class="persona-name">Amina K.</div>
+              <div class="persona-sub">BSc Economics, class of 2025</div>
+            </div>
+          </div>
+          <div class="role">Target role: Data Analyst</div>
+          <div class="skill">
+            <div class="skill-row">
+              <span>SQL</span><span class="hi">Very high demand</span>
+            </div>
+            <div class="bar"><i style="width: 92%"></i></div>
+          </div>
+          <div class="skill">
+            <div class="skill-row">
+              <span>Power BI / Excel</span
+              ><span class="hi">Very high demand</span>
+            </div>
+            <div class="bar"><i style="width: 86%"></i></div>
+          </div>
+          <div class="skill">
+            <div class="skill-row">
+              <span>Python (pandas)</span><span class="hi">High demand</span>
+            </div>
+            <div class="bar"><i style="width: 68%"></i></div>
+          </div>
+          <div class="skill">
+            <div class="skill-row">
+              <span>Statistics</span><span class="mid">Medium demand</span>
+            </div>
+            <div class="bar"><i class="amber" style="width: 44%"></i></div>
+          </div>
+          <div class="sample-note">
+            This is an example of what to expect. Your own report is built from
+            your degree and the role you choose.
+          </div>
+        </div>
+      </section>
+
+      <section class="how" id="how">
+        <div class="section-head">
+          <div class="eyebrow">How it works</div>
+          <h2>Four steps from graduate to job-ready</h2>
+          <p>
+            We do not sell courses. We show you which skills to learn first,
+            then point you to free or low-cost resources for each one.
+          </p>
+        </div>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <h3>Tell us about you</h3>
+            <p>
+              Your degree, institution, graduation year, interests and the roles
+              you want.
+            </p>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <h3>See your gaps</h3>
+            <p>Missing skills ranked by how much employers ask for them.</p>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <h3>Follow your roadmap</h3>
+            <p>
+              A step-by-step plan with free or low-cost resources linked to
+              every step.
+            </p>
+          </div>
+          <div class="step">
+            <div class="step-num amber">4</div>
+            <h3>Track your progress</h3>
+            <p>Tick off steps and watch your readiness score rise.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="signup" id="signup">
+        <div class="signup-text">
+          <div class="eyebrow">Why sign up</div>
+          <h2>Stop guessing what to learn next</h2>
+          <ul class="benefits">
+            <li>
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  d="M5 12.5l4.5 4.5L19 7.5"
+                  fill="none"
+                  stroke="#2FB58C"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              Your gap report is saved to your profile, so you can come back to
+              it.
+            </li>
+            <li>
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  d="M5 12.5l4.5 4.5L19 7.5"
+                  fill="none"
+                  stroke="#2FB58C"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              A roadmap built for the role you want, not a generic course list.
+            </li>
+            <li>
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  d="M5 12.5l4.5 4.5L19 7.5"
+                  fill="none"
+                  stroke="#2FB58C"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              Free and low-cost resources linked to every step.
+            </li>
+            <li>
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  d="M5 12.5l4.5 4.5L19 7.5"
+                  fill="none"
+                  stroke="#2FB58C"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              A readiness score that shows how close you are to job-ready.
+            </li>
+          </ul>
+        </div>
+        <div class="signup-card">
+          <h3>Create your account</h3>
+          <p>
+            It takes a few minutes. Add your degree and target role to get your
+            first skill gap report.
+          </p>
+          <a href="register.html" class="btn btn-primary btn-lg">Sign up</a>
+          <div class="small">
+            Already have an account? <a href="login.html">Sign in</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="about">
+        <div class="about-text" id="about">
+          <div class="eyebrow">About us</div>
+          <h2>Built for graduates who are ready to work</h2>
+          <p>
+            Many African graduates finish university without knowing which
+            skills employers want. Skill Gap Analyzer is Phase 1 of a larger
+            mission: career mapping and upskilling pathways for African youth.
+          </p>
+          <p>
+            The project is built by Ineza Henry Jayz, a Software Engineering
+            student at African Leadership University in Kigali, Rwanda.
+          </p>
+        </div>
+        <div class="contact" id="contact">
+          <div class="eyebrow">Contact us</div>
+          <h2>Questions or feedback?</h2>
+          <dl>
+            <dt>Email</dt>
+            <dd>
+              <a href="mailto:i.henryjay@alustudent.com"
+                >i.henryjay@alustudent.com</a
+              >
+            </dd>
+          </dl>
+          <dl>
+            <dt>Location</dt>
+            <dd>Kigali, Rwanda</dd>
+          </dl>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="brand">
+            <svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true">
+              <rect x="3" y="14" width="6" height="11" fill="#2FB58C" />
+              <rect x="11" y="8" width="6" height="17" fill="#2FB58C" />
+              <rect x="19" y="3" width="6" height="22" fill="#F2B01E" />
+            </svg>
+            <span>Skill Gap Analyzer</span>
+          </div>
+          <div>Find your skill gaps. Follow a roadmap. Get job-ready.</div>
+        </div>
+        <div class="footer-cols">
+          <div class="footer-col">
+            <strong>Product</strong><a href="#how">How it works</a
+            ><a href="#sample">Sample report</a
+            ><a href="register.html">Sign up</a>
+          </div>
+          <div class="footer-col">
+            <strong>Company</strong><a href="#about">About us</a
+            ><a href="#contact">Contact</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2026 Skill Gap Analyzer. Kigali, Rwanda.
+      </div>
+    </footer>
+  </body>
+</html>

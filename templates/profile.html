@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Profile</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+  </head>
+  <body>
+    <form method="post">
+      <h1>Your profile</h1>
+      <label for="role">Target role</label>
+      <select id="role" name="role">
+        {% for role in roles %}
+        <option>{{ role }}</option>
+        {% endfor %}
+      </select>
+      <h2>Skills you already have</h2>
+      {% for skill in all_skills %}
+      <label
+        ><input type="checkbox" name="skills" value="{{ skill }}" /> {{ skill
+        }}</label
+      ><br />
+      {% endfor %}
+      <button type="submit">Analyze my skill gap</button>
+    </form>
+  </body>
+</html>

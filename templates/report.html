@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Report</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+  </head>
+  <body>
+    <h1>Skill gaps for {{ role }}</h1>
+    <ol>
+      {% for gap in gaps %}
+      <li>
+        <strong>{{ gap.skill }}</strong> (demand {{ gap.demand }}) {% for r in
+        gap.resources %} <br /><a href="{{ r.url }}">{{ r.title }}</a> [{{
+        r.cost }}] {% endfor %}
+      </li>
+      {% endfor %}
+    </ol>
+    <a href="/roadmap">My roadmap</a> | <a href="/profile">Edit profile</a>
+  </body>
+</html>

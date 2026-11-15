@@ -1,0 +1,91 @@
+{
+  "Data Analyst": [
+    {
+      "skill": "SQL",
+      "demand": 92,
+      "resources": [
+        {
+          "title": "SQL for Analytics",
+          "url": "https://www.freecodecamp.org/news/learn-sql-for-analytics/",
+          "cost": "free"
+        }
+      ]
+    },
+    {
+      "skill": "Excel",
+      "demand": 86,
+      "resources": [
+        {
+          "title": "Excel: Foundations",
+          "url": "https://www.learnfree.org/series/excel-foundations",
+          "cost": "free"
+        }
+      ]
+    },
+    {
+      "skill": "Python",
+      "demand": 68,
+      "resources": [
+        {
+          "title": "Data Analysis with Python for Excel Users Course",
+          "url": "https://www.freecodecamp.org/news/data-analysis-with-python-for-excel-users-course/",
+          "cost": "free"
+        }
+      ]
+    },
+    {
+      "skill": "Data Visualization",
+      "demand": 80,
+      "resources": [
+        {
+          "title": "Excel for Data Visualization",
+          "url": "https://www.freecodecamp.org/news/excel-for-data-visualization/",
+          "cost": "free"
+        }
+      ]
+    },
+    {
+      "skill": "Statistics",
+      "demand": 44,
+      "resources": [
+        {
+          "title": "Statistics for ML & Data Analysis",
+          "url": "https://www.kaggle.com/code/antoreepjana/statistics-for-ml-data-analysis/notebook",
+          "cost": "free"
+        }
+      ]
+    },
+    {
+      "skill": "Communication",
+      "demand": 60,
+      "resources": []
+    },
+    {
+      "skill": "Data Cleaning",
+      "demand": 50,
+      "resources": [
+        {
+          "title": "Data Cleaning",
+          "url": "https://www.kaggle.com/code/shahriarkabir/data-cleaning",
+          "cost": "free"
+        }
+      ]
+    },
+    {
+      "skill": "Cloud Data Warehouses",
+      "demand": 70,
+      "resources": []
+    },
+    {
+      "skill": "Data Transformation",
+      "demand": 62,
+      "resources": [
+        {
+          "title": "Data Transformation",
+          "url": "https://www.kaggle.com/code/zahrazolghadr/data-transformation",
+          "cost": "free"
+        }
+      ]
+    }
+  ]
+}
