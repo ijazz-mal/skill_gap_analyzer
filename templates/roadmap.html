@@ -1,34 +1,37 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Roadmap</title>
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='styles.css') }}"
-    />
-  </head>
-  <body>
-    <h1>Your roadmap: {{ role }}</h1>
-    <p>Readiness score: {{ score }}%</p>
-    <progress value="{{ score }}" max="100"></progress>
-    <ol>
-      {% for gap in gaps %}
-      <li>
-        <strong>{{ gap.skill }}</strong>
-        {% if gap.skill in done %}(done){% endif %} {% for r in gap.resources %}
-        <br /><a href="{{ r.url }}">{{ r.title }}</a> [{{ r.cost }}] {% endfor
-        %}
-        <form method="post" action="/toggle">
-          <input type="hidden" name="skill" value="{{ gap.skill }}" />
-          <button type="submit">
-            {% if gap.skill in done %}Undo{% else %}Mark done{% endif %}
-          </button>
-        </form>
-      </li>
-      {% endfor %}
-    </ol>
-    <a href="/report">Gap report</a> | <a href="/profile">Edit profile</a> |
-    <a href="/logout">Log out</a>
-  </body>
-</html>
+{% extends "base.html" %}
+{% block title %}Roadmap{% endblock %}
+{% block content %}
+<main class="page">
+  <h1>Your roadmap: {{ role }}</h1>
+
+  <div class="score-card">
+    <div class="score-head"><span>Readiness score</span><span class="score-num">{{ score }}%</span></div>
+    <div class="bar"><i style="width: {{ score }}%"></i></div>
+  </div>
+
+  <ol class="steps-list">
+    {% for gap in gaps %}
+    <li class="step-card {% if gap.skill in done %}done{% endif %}">
+      <div class="step-num">{% if gap.skill in done %}&#10003;{% else %}{{ loop.index }}{% endif %}</div>
+      <div class="step-body">
+        <div class="step-title">{{ gap.skill }} <span class="demand">demand {{ gap.demand }}</span></div>
+        {% for r in gap.resources %}
+        <div class="resource">
+          <a href="{{ r.url }}">{{ r.title }}</a>
+          <span class="tag tag-{{ r.cost }}">{{ r.cost }}</span>
+        </div>
+        {% else %}
+        <div class="no-resource">No resource added yet.</div>
+        {% endfor %}
+      </div>
+      <form method="post" action="/toggle">
+        <input type="hidden" name="skill" value="{{ gap.skill }}">
+        <button type="submit" class="step-btn {% if gap.skill in done %}undo{% endif %}">
+          {% if gap.skill in done %}Undo{% else %}Mark done{% endif %}
+        </button>
+      </form>
+    </li>
+    {% endfor %}
+  </ol>
+</main>
+{% endblock %}

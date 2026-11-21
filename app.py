@@ -19,6 +19,7 @@ def profile():
     if "user_id" not in session:
         return redirect("/login")
     roles = load_roles()
+
     if request.method == "POST":
         role = request.form["role"]
         my_skills = request.form.getlist("skills")
@@ -33,9 +34,23 @@ def profile():
         )
         conn.commit()
         conn.close()
-        return redirect("/roadmap")
+        return redirect("/report")
+    
+    conn = get_db()
+    row = conn.execute(
+        "SELECT * FROM profiles WHERE user_id = ?", (session["user_id"],)
+    ).fetchone()
+    conn.close()
+    saved_role = row["target_role"] if row else None
+    saved_skills = json.loads(row["skills"]) if row else []
     all_skills = sorted({s["skill"] for r in roles.values() for s in r})
-    return render_template("profile.html", roles=roles, all_skills=all_skills)
+    return render_template(
+        "profile.html",
+        roles=roles,
+        all_skills=all_skills,
+        saved_role=saved_role,
+        saved_skills=saved_skills,
+    )
 
 @app.route("/report")
 def report():

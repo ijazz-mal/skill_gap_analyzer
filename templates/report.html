@@ -1,24 +1,32 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Report</title>
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='styles.css') }}"
-    />
-  </head>
-  <body>
-    <h1>Skill gaps for {{ role }}</h1>
-    <ol>
-      {% for gap in gaps %}
-      <li>
-        <strong>{{ gap.skill }}</strong> (demand {{ gap.demand }}) {% for r in
-        gap.resources %} <br /><a href="{{ r.url }}">{{ r.title }}</a> [{{
-        r.cost }}] {% endfor %}
-      </li>
-      {% endfor %}
-    </ol>
-    <a href="/roadmap">My roadmap</a> | <a href="/profile">Edit profile</a>
-  </body>
-</html>
+{% extends "base.html" %}
+{% block title %}Report{% endblock %}
+{% block content %}
+<main class="page">
+  <h1>Your skill gaps for {{ role }}</h1>
+  {% if gaps %}
+  <p>{{ gaps|length }} skills to work on, ranked by employer demand.</p>
+  <ol class="steps-list">
+    {% for gap in gaps %}
+    <li class="step-card">
+      <div class="step-num">{{ loop.index }}</div>
+      <div class="step-body">
+        <div class="step-title">{{ gap.skill }} <span class="demand">{% if gap.demand >= 80 %}Very high demand{% elif gap.demand >= 60 %}High demand{% else %}Medium demand{% endif %}</span></div>
+        
+        {% for r in gap.resources %}
+        <div class="resource">
+          <a href="{{ r.url }}">{{ r.title }}</a>
+          <span class="tag tag-{{ r.cost }}">{{ r.cost }}</span>
+        </div>
+        {% else %}
+        <div class="no-resource">No resource added yet.</div>
+        {% endfor %}
+      </div>
+    </li>
+    {% endfor %}
+  </ol>
+  <a href="/roadmap" class="btn btn-primary btn-lg">Open my roadmap</a>
+  {% else %}
+  <p>No gaps found. You already have every skill this role requires.</p>
+  {% endif %}
+</main>
+{% endblock %}
