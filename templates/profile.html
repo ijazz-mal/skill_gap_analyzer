@@ -4,11 +4,43 @@
 <main class="page">
   <h1>Your profile</h1>
   <form method="post" class="card">
+    {% if error %}
+    <p class="error" role="alert">{{ error }}</p>
+    {% endif %}
+    <div class="field">
+      <label for="degree">Degree</label>
+      <input id="degree" name="degree" value="{{ saved.degree }}" required />
+    </div>
+    <div class="field">
+      <label for="institution">Institution</label>
+      <input
+        id="institution"
+        name="institution"
+        value="{{ saved.institution }}"
+        required
+      />
+    </div>
+    <div class="field">
+      <label for="graduation_year">Graduation year</label>
+      <input
+        id="graduation_year"
+        name="graduation_year"
+        type="number"
+        min="1990"
+        max="2035"
+        value="{{ saved.graduation_year }}"
+        required
+      />
+    </div>
+    <div class="field">
+      <label for="interests">Career interests (optional)</label>
+      <input id="interests" name="interests" value="{{ saved.interests }}" />
+    </div>
     <div class="field">
       <label for="role">Target role</label>
       <select id="role" name="role">
         {% for role in roles %}
-        <option {% if role == saved_role %}selected{% endif %}>{{ role }}</option>
+        <option {% if role == saved.target_role %}selected{% endif %}>{{ role }}</option>
         {% endfor %}
       </select>
     </div>
@@ -18,7 +50,9 @@
       <label class="check"><input type="checkbox" name="skills" value="{{ skill }}" {% if skill in saved_skills %}checked{% endif %}> {{ skill }}</label>
       {% endfor %}
     </div>
-    <button type="submit" class="btn btn-primary btn-lg">Analyze my skill gap</button>
+    <button type="submit" class="btn btn-primary btn-lg">
+      Analyze my skill gap
+    </button>
   </form>
 </main>
 {% endblock %}

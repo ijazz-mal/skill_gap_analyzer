@@ -9,6 +9,29 @@
     <div class="bar"><i style="width: {{ score }}%"></i></div>
   </div>
 
+  {% if ready %}
+  <section class="score-card">
+    <strong>You've reached the {{ threshold }}% readiness threshold.</strong>
+    {% if partners %}
+    <p class="no-resource">These partners hire for {{ role }}. If you share, the platform team passes your name, email, degree, institution and readiness to that partner. It's your choice, and you can withdraw at any time.</p>
+    {% for p in partners %}
+    <div class="partner">
+      <div>
+        <strong>{{ p.name }}</strong>{% if p.website %} · <a href="{{ p.website }}">website</a>{% endif %}
+        {% if p.description %}<div class="no-resource">{{ p.description }}</div>{% endif %}
+      </div>
+      <form method="post" action="{% if p.id in shared %}/unshare{% else %}/share{% endif %}">
+        <input type="hidden" name="partner_id" value="{{ p.id }}">
+        <button class="step-btn {% if p.id in shared %}undo{% endif %}">{% if p.id in shared %}Withdraw{% else %}Share my profile{% endif %}</button>
+      </form>
+    </div>
+    {% endfor %}
+    {% else %}
+    <p class="no-resource">No partner organizations are listed for {{ role }} yet.</p>
+    {% endif %}
+  </section>
+  {% endif %}
+
   <ol class="steps-list">
     {% for gap in gaps %}
     <li class="step-card {% if gap.skill in done %}done{% endif %}">

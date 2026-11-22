@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% block title %}Admin{% endblock %}
+{% block content %}
+<main class="page">
+  <h1>Manage skills and jobs data</h1>
+
+  <section class="card">
+    <h2>Add a role</h2>
+    <form method="post" action="/admin/role" class="inline-form">
+      <div class="field"><label for="rname">Role name</label><input id="rname" name="name" required></div>
+      <button type="submit" class="btn btn-primary">Add role</button>
+    </form>
+  </section>
+
+  <section class="card">
+    <h2>Add or update a skill for a role</h2>
+    <form method="post" action="/admin/skill" class="inline-form">
+      <div class="field"><label for="srole">Role</label>
+        <select id="srole" name="role_id">{% for r in roles %}<option value="{{ r.id }}">{{ r.name }}</option>{% endfor %}</select></div>
+      <div class="field"><label for="sname">Skill</label><input id="sname" name="skill" list="skill-list" required>
+        <datalist id="skill-list">{% for s in skills %}<option value="{{ s.name }}">{% endfor %}</datalist></div>
+      <div class="field"><label for="sdemand">Demand (0-100)</label><input id="sdemand" name="demand" type="number" min="0" max="100" required></div>
+      <button type="submit" class="btn btn-primary">Save skill</button>
+    </form>
+  </section>
+
+  <section class="card">
+    <h2>Add a resource</h2>
+    <form method="post" action="/admin/resource" class="inline-form">
+      <div class="field"><label for="rskill">Skill</label>
+        <select id="rskill" name="skill_id">{% for s in skills %}<option value="{{ s.id }}">{{ s.name }}</option>{% endfor %}</select></div>
+      <div class="field"><label for="rtitle">Title</label><input id="rtitle" name="title" required></div>
+      <div class="field"><label for="rurl">Link</label><input id="rurl" name="url" type="url" required></div>
+      <div class="field"><label for="rcost">Cost</label>
+        <select id="rcost" name="cost"><option>free</option><option>paid</option></select></div>
+      <button type="submit" class="btn btn-primary">Add resource</button>
+    </form>
+  </section>
+
+  <section class="card">
+    <h2>Roles and skills</h2>
+    <div class="table-wrap"><table class="admin-table">
+      <thead><tr><th>Role</th><th>Skill</th><th>Demand</th><th></th></tr></thead>
+      <tbody>
+      {% for r in rows %}
+        <tr><td>{{ r.role }}</td><td>{{ r.skill }}</td><td>{{ r.demand }}</td>
+          <td><form method="post" action="/admin/skill/delete">
+            <input type="hidden" name="role_id" value="{{ r.role_id }}"><input type="hidden" name="skill_id" value="{{ r.skill_id }}">
+            <button class="step-btn undo">Remove</button></form></td></tr>
+      {% endfor %}
+      </tbody>
+    </table></div>
+  </section>
+
+  <section class="card">
+    <h2>Resources</h2>
+    <div class="table-wrap"><table class="admin-table">
+      <thead><tr><th>Skill</th><th>Title</th><th>Cost</th><th></th></tr></thead>
+      <tbody>
+      {% for r in resources %}
+        <tr><td>{{ r.skill }}</td><td><a href="{{ r.url }}">{{ r.title }}</a></td><td><span class="tag tag-{{ r.cost }}">{{ r.cost }}</span></td>
+          <td><form method="post" action="/admin/resource/delete"><input type="hidden" name="id" value="{{ r.id }}"><button class="step-btn undo">Remove</button></form></td></tr>
+      {% endfor %}
+      </tbody>
+    </table></div>
+  </section>
+  <section class="card">
+    <h2>Partner organizations</h2>
+    <form method="post" action="/admin/partner" class="inline-form">
+      <div class="field"><label for="pname">Name</label><input id="pname" name="name" required></div>
+      <div class="field"><label for="pweb">Website</label><input id="pweb" name="website" type="url"></div>
+      <div class="field"><label for="pdesc">Description</label><input id="pdesc" name="description"></div>
+      <div class="field"><label for="prole">Hires for</label>
+        <select id="prole" name="role_id">{% for r in roles %}<option value="{{ r.id }}">{{ r.name }}</option>{% endfor %}</select></div>
+      <button type="submit" class="btn btn-primary">Add partner</button>
+    </form>
+    <div class="table-wrap"><table class="admin-table">
+      <thead><tr><th>Partner</th><th>Roles</th><th></th></tr></thead>
+      <tbody>{% for p in partners %}
+        <tr><td>{{ p.name }}</td><td>{{ p.roles }}</td>
+          <td><form method="post" action="/admin/partner/delete"><input type="hidden" name="id" value="{{ p.id }}"><button class="step-btn undo">Remove</button></form></td></tr>
+      {% endfor %}</tbody>
+    </table></div>
+  </section>
+  
+  <section class="card">
+    <h2>Shared profiles (referrals)</h2>
+    <div class="table-wrap"><table class="admin-table">
+      <thead><tr><th>Date</th><th>Partner</th><th>Graduate</th><th>Email</th><th>Degree</th><th>Institution</th></tr></thead>
+      <tbody>{% for r in referrals %}
+        <tr><td>{{ r.created_at }}</td><td>{{ r.partner }}</td><td>{{ r.name }}</td><td>{{ r.email }}</td><td>{{ r.degree }}</td><td>{{ r.institution }}</td></tr>
+      {% else %}
+        <tr><td colspan="6">No profiles shared yet.</td></tr>
+      {% endfor %}</tbody>
+    </table></div>
+  </section>
+</main>
+{% endblock %}

@@ -816,3 +816,51 @@ p {
   border-radius: 8px;
   color: #7a1f16;
 }
+
+/* Admin */
+.inline-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: flex-end;
+}
+.inline-form .field {
+  flex: 1 1 180px;
+}
+.inline-form .btn {
+  min-height: 48px;
+  border: 0;
+  font:
+    700 16px 'DM Sans',
+    sans-serif;
+  cursor: pointer;
+}
+.table-wrap {
+  overflow-x: auto;
+}
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  min-width: 520px;
+}
+.admin-table th {
+  padding: 10px 12px;
+  font-size: 14px;
+  color: var(--muted);
+}
+.admin-table td {
+  padding: 12px;
+  border-top: 1px solid var(--line);
+  vertical-align: middle;
+}
+
+.partner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
