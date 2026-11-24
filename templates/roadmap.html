@@ -20,7 +20,7 @@
         <strong>{{ p.name }}</strong>{% if p.website %} · <a href="{{ p.website }}">website</a>{% endif %}
         {% if p.description %}<div class="no-resource">{{ p.description }}</div>{% endif %}
       </div>
-      <form method="post" action="{% if p.id in shared %}/unshare{% else %}/share{% endif %}">
+      <form method="post" action="{% if p.id in shared %}/unshare{% else %}/share{% endif %}"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <input type="hidden" name="partner_id" value="{{ p.id }}">
         <button class="step-btn {% if p.id in shared %}undo{% endif %}">{% if p.id in shared %}Withdraw{% else %}Share my profile{% endif %}</button>
       </form>
@@ -47,7 +47,7 @@
         <div class="no-resource">No resource added yet.</div>
         {% endfor %}
       </div>
-      <form method="post" action="/toggle">
+      <form method="post" action="/toggle"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <input type="hidden" name="skill" value="{{ gap.skill }}">
         <button type="submit" class="step-btn {% if gap.skill in done %}undo{% endif %}">
           {% if gap.skill in done %}Undo{% else %}Mark done{% endif %}
