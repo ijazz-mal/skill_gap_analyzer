@@ -63,7 +63,13 @@ def profile():
     conn.close()
     saved = dict(row) if row else {}
     saved_skills = json.loads(row["skills"]) if row else []
-    all_skills = sorted({s["skill"] for r in roles.values() for s in r})
+    skill_roles = {}
+    
+    for role_name, items in roles.items():
+        for s in items:
+            skill_roles.setdefault(s["skill"], []).append(role_name)
+    all_skills = sorted(skill_roles)
+
     return render_template(
         "profile.html",
         roles=roles,
@@ -189,6 +195,7 @@ def toggle():
     if "user_id" not in session:
         return redirect("/login")
     skill = request.form["skill"]
+    now = datetime.now(timezone.utc).isoformat(timespec="seconds")
     conn = get_db()
     exists = conn.execute(
         "SELECT 1 FROM progress WHERE user_id = ? AND skill = ?",
@@ -199,15 +206,17 @@ def toggle():
             "DELETE FROM progress WHERE user_id = ? AND skill = ?",
             (session["user_id"], skill),
         )
+        action = "undone"
     else:
         conn.execute(
             "INSERT INTO progress (user_id, skill, completed_at) VALUES (?, ?, ?)",
-            (
-                session["user_id"],
-                skill,
-                datetime.now(timezone.utc).isoformat(timespec="seconds"),
-            ),
+            (session["user_id"], skill, now),
         )
+        action = "done"
+    conn.execute(
+        "INSERT INTO progress_log (user_id, skill, action, created_at) VALUES (?, ?, ?, ?)",
+        (session["user_id"], skill, action, now),
+    )
     conn.commit()
     conn.close()
     return redirect("/roadmap")
@@ -263,6 +272,15 @@ def admin():
            LEFT JOIN profiles pf ON pf.user_id = u.id
            ORDER BY ref.created_at DESC"""
     ).fetchall()
+    events = conn.execute(
+        """SELECT l.created_at, u.name, u.email, l.skill, l.action
+           FROM progress_log l JOIN users u ON u.id = l.user_id
+           ORDER BY l.created_at DESC LIMIT 100"""
+    ).fetchall()
+    closers = conn.execute(
+        """SELECT COUNT(*) FROM
+           (SELECT user_id FROM progress GROUP BY user_id HAVING COUNT(*) >= 3)"""
+    ).fetchone()[0] 
     conn.close()
     return render_template(
         "admin.html",
@@ -271,7 +289,9 @@ def admin():
         skills=skills,
         resources=resources,
         partners=partners,
-        referrals=referrals
+        referrals=referrals,
+        events=events,
+        closers=closers
     )
 
 

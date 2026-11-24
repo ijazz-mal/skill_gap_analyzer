@@ -5,8 +5,18 @@
       "demand": 92,
       "resources": [
         {
-          "title": "SQL for Analytics",
+          "title": "SQL for Analytics (freeCodeCamp)",
           "url": "https://www.freecodecamp.org/news/learn-sql-for-analytics/",
+          "cost": "free"
+        },
+        {
+          "title": "Kaggle Learn: Intro to SQL",
+          "url": "https://www.kaggle.com/learn/intro-to-sql",
+          "cost": "free"
+        },
+        {
+          "title": "SQLBolt: interactive SQL lessons",
+          "url": "https://sqlbolt.com/",
           "cost": "free"
         }
       ]
@@ -16,19 +26,8 @@
       "demand": 86,
       "resources": [
         {
-          "title": "Excel: Foundations",
+          "title": "Excel: Foundations (LearnFree)",
           "url": "https://www.learnfree.org/series/excel-foundations",
-          "cost": "free"
-        }
-      ]
-    },
-    {
-      "skill": "Python",
-      "demand": 68,
-      "resources": [
-        {
-          "title": "Data Analysis with Python for Excel Users Course",
-          "url": "https://www.freecodecamp.org/news/data-analysis-with-python-for-excel-users-course/",
           "cost": "free"
         }
       ]
@@ -38,8 +37,88 @@
       "demand": 80,
       "resources": [
         {
-          "title": "Excel for Data Visualization",
+          "title": "Excel for Data Visualization (freeCodeCamp)",
           "url": "https://www.freecodecamp.org/news/excel-for-data-visualization/",
+          "cost": "free"
+        },
+        {
+          "title": "Kaggle Learn: Data Visualization",
+          "url": "https://www.kaggle.com/learn/data-visualization",
+          "cost": "free"
+        }
+      ]
+    },
+    {
+      "skill": "Cloud Data Warehouses",
+      "demand": 70,
+      "resources": [
+        {
+          "title": "BigQuery documentation: introduction (Google Cloud)",
+          "url": "https://cloud.google.com/bigquery/docs/introduction",
+          "cost": "free"
+        }
+      ]
+    },
+    {
+      "skill": "Python",
+      "demand": 68,
+      "resources": [
+        {
+          "title": "Data Analysis with Python for Excel Users (freeCodeCamp)",
+          "url": "https://www.freecodecamp.org/news/data-analysis-with-python-for-excel-users-course/",
+          "cost": "free"
+        },
+        {
+          "title": "Kaggle Learn: Python",
+          "url": "https://www.kaggle.com/learn/python",
+          "cost": "free"
+        },
+        {
+          "title": "Kaggle Learn: Pandas",
+          "url": "https://www.kaggle.com/learn/pandas",
+          "cost": "free"
+        }
+      ]
+    },
+    {
+      "skill": "Data Transformation",
+      "demand": 62,
+      "resources": [
+        {
+          "title": "Data Transformation (Kaggle notebook)",
+          "url": "https://www.kaggle.com/code/zahrazolghadr/data-transformation",
+          "cost": "free"
+        }
+      ]
+    },
+    {
+      "skill": "Communication",
+      "demand": 60,
+      "resources": [
+        {
+          "title": "Effective communication in the workplace (OpenLearn, The Open University)",
+          "url": "https://www.open.edu/openlearn/money-business/effective-communication-the-workplace/",
+          "cost": "free"
+        },
+        {
+          "title": "Effective Communication (Great Learning Academy)",
+          "url": "https://www.mygreatlearning.com/academy/learn-for-free/courses/effective-communication",
+          "cost": "free"
+        }
+      ]
+    },
+    {
+      "skill": "Data Cleaning",
+      "demand": 50,
+      "resources": [
+        {
+          "title": "Kaggle Learn: Data Cleaning",
+          "url": "https://www.kaggle.com/learn/data-cleaning",
+          "cost": "free"
+        },
+        {
+          "title": "Data Cleaning (Kaggle notebook)",
+          "url": "https://www.kaggle.com/code/shahriarkabir/data-cleaning",
           "cost": "free"
         }
       ]
@@ -49,41 +128,273 @@
       "demand": 44,
       "resources": [
         {
-          "title": "Statistics for ML & Data Analysis",
+          "title": "Khan Academy: Statistics and Probability",
+          "url": "https://www.khanacademy.org/math/statistics-probability",
+          "cost": "free"
+        },
+        {
+          "title": "Statistics for ML & Data Analysis (Kaggle notebook)",
           "url": "https://www.kaggle.com/code/antoreepjana/statistics-for-ml-data-analysis/notebook",
           "cost": "free"
+        }
+      ]
+    }
+  ],
+  "Web Developer": [
+    {
+      "skill": "JavaScript",
+      "demand": 95,
+      "resources": [
+        {
+          "title": "MDN: Learn web development",
+          "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development",
+          "cost": "free"
+        },
+        {
+          "title": "freeCodeCamp curriculum",
+          "url": "https://www.freecodecamp.org/learn",
+          "cost": "free"
+        }
+      ]
+    },
+    {
+      "skill": "HTML & CSS",
+      "demand": 90,
+      "resources": [
+        {
+          "title": "MDN: Learn web development",
+          "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development",
+          "cost": "free"
+        },
+        {
+          "title": "freeCodeCamp curriculum",
+          "url": "https://www.freecodecamp.org/learn",
+          "cost": "free"
+        }
+      ]
+    },
+    {
+      "skill": "Git & GitHub",
+      "demand": 80,
+      "resources": [
+        {
+          "title": "Pro Git book",
+          "url": "https://git-scm.com/book/en/v2",
+          "cost": "free"
+        }
+      ]
+    },
+    {
+      "skill": "Responsive Design",
+      "demand": 75,
+      "resources": [
+        {
+          "title": "MDN: Learn web development",
+          "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development",
+          "cost": "free"
+        },
+        {
+          "title": "freeCodeCamp curriculum",
+          "url": "https://www.freecodecamp.org/learn",
+          "cost": "free"
+        }
+      ]
+    },
+    {
+      "skill": "SQL",
+      "demand": 70,
+      "resources": [
+        {
+          "title": "SQL for Analytics (freeCodeCamp)",
+          "url": "https://www.freecodecamp.org/news/learn-sql-for-analytics/",
+          "cost": "free"
+        },
+        {
+          "title": "Kaggle Learn: Intro to SQL",
+          "url": "https://www.kaggle.com/learn/intro-to-sql",
+          "cost": "free"
+        },
+        {
+          "title": "SQLBolt: interactive SQL lessons",
+          "url": "https://sqlbolt.com/",
+          "cost": "free"
+        }
+      ]
+    },
+    {
+      "skill": "Problem Solving",
+      "demand": 70,
+      "resources": [
+        {
+          "title": "Extending and developing your thinking skills (OpenLearn)",
+          "url": "https://www.open.edu/openlearn/course/view.php?id=793",
+          "cost": "free"
+        },
+        {
+          "title": "OpenLearn Employability hub (includes problem solving)",
+          "url": "https://www.open.edu/openlearn/course/view.php?id=28988",
+          "cost": "free"
+        },
+        {
+          "title": "Analytical thinking for problem solving (The Open University short course)",
+          "url": "https://www.open.ac.uk/courses/short-courses/bgxs003",
+          "cost": "paid"
         }
       ]
     },
     {
       "skill": "Communication",
       "demand": 60,
-      "resources": []
-    },
-    {
-      "skill": "Data Cleaning",
-      "demand": 50,
       "resources": [
         {
-          "title": "Data Cleaning",
-          "url": "https://www.kaggle.com/code/shahriarkabir/data-cleaning",
+          "title": "Effective communication in the workplace (OpenLearn, The Open University)",
+          "url": "https://www.open.edu/openlearn/money-business/effective-communication-the-workplace/",
+          "cost": "free"
+        },
+        {
+          "title": "Effective Communication (Great Learning Academy)",
+          "url": "https://www.mygreatlearning.com/academy/learn-for-free/courses/effective-communication",
+          "cost": "free"
+        }
+      ]
+    }
+  ],
+  "Business Analyst": [
+    {
+      "skill": "Excel",
+      "demand": 90,
+      "resources": [
+        {
+          "title": "Excel: Foundations (LearnFree)",
+          "url": "https://www.learnfree.org/series/excel-foundations",
           "cost": "free"
         }
       ]
     },
     {
-      "skill": "Cloud Data Warehouses",
-      "demand": 70,
-      "resources": []
-    },
-    {
-      "skill": "Data Transformation",
-      "demand": 62,
+      "skill": "Requirements Gathering",
+      "demand": 85,
       "resources": [
         {
-          "title": "Data Transformation",
-          "url": "https://www.kaggle.com/code/zahrazolghadr/data-transformation",
+          "title": "Business Analysis course with CBAP basics (Simplilearn SkillUp)",
+          "url": "https://www.simplilearn.com/cbap-basics-skillup?tag=Soft+Skills",
           "cost": "free"
+        },
+        {
+          "title": "Requirements Gathering in Business Analysis, Microsoft (Coursera)",
+          "url": "https://www.coursera.org/learn/requirements-gathering-in-business-analysis",
+          "cost": "paid"
+        }
+      ]
+    },
+    {
+      "skill": "Communication",
+      "demand": 80,
+      "resources": [
+        {
+          "title": "Effective communication in the workplace (OpenLearn, The Open University)",
+          "url": "https://www.open.edu/openlearn/money-business/effective-communication-the-workplace/",
+          "cost": "free"
+        },
+        {
+          "title": "Effective Communication (Great Learning Academy)",
+          "url": "https://www.mygreatlearning.com/academy/learn-for-free/courses/effective-communication",
+          "cost": "free"
+        }
+      ]
+    },
+    {
+      "skill": "SQL",
+      "demand": 75,
+      "resources": [
+        {
+          "title": "SQL for Analytics (freeCodeCamp)",
+          "url": "https://www.freecodecamp.org/news/learn-sql-for-analytics/",
+          "cost": "free"
+        },
+        {
+          "title": "Kaggle Learn: Intro to SQL",
+          "url": "https://www.kaggle.com/learn/intro-to-sql",
+          "cost": "free"
+        },
+        {
+          "title": "SQLBolt: interactive SQL lessons",
+          "url": "https://sqlbolt.com/",
+          "cost": "free"
+        }
+      ]
+    },
+    {
+      "skill": "Data Visualization",
+      "demand": 70,
+      "resources": [
+        {
+          "title": "Excel for Data Visualization (freeCodeCamp)",
+          "url": "https://www.freecodecamp.org/news/excel-for-data-visualization/",
+          "cost": "free"
+        },
+        {
+          "title": "Kaggle Learn: Data Visualization",
+          "url": "https://www.kaggle.com/learn/data-visualization",
+          "cost": "free"
+        }
+      ]
+    },
+    {
+      "skill": "Stakeholder Management",
+      "demand": 65,
+      "resources": [
+        {
+          "title": "Introduction to Stakeholder Management (Alison)",
+          "url": "https://alison.com/course/introduction-to-stakeholder-management",
+          "cost": "free"
+        },
+        {
+          "title": "Stakeholder Management (Starweaver on Coursera)",
+          "url": "https://www.coursera.org/learn/stakeholder-management",
+          "cost": "paid"
+        }
+      ]
+    },
+    {
+      "skill": "Process Modelling",
+      "demand": 60,
+      "resources": [
+        {
+          "title": "Process Modeling course (Bizagi e-learning)",
+          "url": "https://elearning.bizagi.com/my/modeling.php",
+          "cost": "free"
+        },
+        {
+          "title": "BPMN tutorial: quick-start guide (Process Street)",
+          "url": "https://www.process.st/bpmn-tutorial/",
+          "cost": "free"
+        },
+        {
+          "title": "Business Process Modeling A-Z: Learn BPMN 2.0 (Udemy)",
+          "url": "https://www.udemy.com/course/process-modeling/",
+          "cost": "paid"
+        }
+      ]
+    },
+    {
+      "skill": "Project Management",
+      "demand": 55,
+      "resources": [
+        {
+          "title": "Free Project Management Course for Beginners (Simplilearn SkillUp)",
+          "url": "https://www.simplilearn.com/free-project-management-beginners-course-skillup",
+          "cost": "free"
+        },
+        {
+          "title": "Project management basics (OpenLearn, The Open University)",
+          "url": "https://www.open.edu/openlearncreate/course/view.php?id=17558",
+          "cost": "free"
+        },
+        {
+          "title": "Google Project Management Certificate (Coursera)",
+          "url": "https://www.coursera.org/professional-certificates/google-project-management",
+          "cost": "paid"
         }
       ]
     }

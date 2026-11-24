@@ -47,7 +47,7 @@
     <h2>Skills you already have</h2>
     <div class="checks">
       {% for skill in all_skills %}
-      <label class="check"><input type="checkbox" name="skills" value="{{ skill }}" {% if skill in saved_skills %}checked{% endif %}> {{ skill }}</label>
+      <label class="check{% for role in roles %}{% if role in skill_roles[skill] %} r{{ loop.index }}{% endif %}{% endfor %}"><input type="checkbox" name="skills" value="{{ skill }}" {% if skill in saved_skills %}checked{% endif %}> {{ skill }}</label>
       {% endfor %}
     </div>
     <button type="submit" class="btn btn-primary btn-lg">
@@ -55,4 +55,9 @@
     </button>
   </form>
 </main>
+<style>
+{% for role in roles %}
+.profile-form:has(#role option:nth-child({{ loop.index }}):checked) .check:not(.r{{ loop.index }}){display:none}
+{% endfor %}
+</style>
 {% endblock %}

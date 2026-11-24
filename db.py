@@ -115,6 +115,16 @@ def init_db():
             FOREIGN KEY (partner_id) REFERENCES partners(id)
         )
     """)
+    conn.execute("""
+        CREATE TABLE IF NOT EXISTS progress_log (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_id INTEGER NOT NULL,
+            skill TEXT NOT NULL,
+            action TEXT NOT NULL,
+            created_at TEXT NOT NULL,
+            FOREIGN KEY (user_id) REFERENCES users(id)
+        )
+    """)
     
     conn.commit()
     conn.close()
