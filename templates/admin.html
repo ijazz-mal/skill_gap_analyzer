@@ -6,7 +6,7 @@
 
   <section class="card">
     <h2>Add a role</h2>
-    <form method="post" action="/admin/role" class="inline-form">
+    <form method="post" action="/admin/role" class="inline-form"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
       <div class="field"><label for="rname">Role name</label><input id="rname" name="name" required></div>
       <button type="submit" class="btn btn-primary">Add role</button>
     </form>
@@ -14,7 +14,7 @@
 
   <section class="card">
     <h2>Add or update a skill for a role</h2>
-    <form method="post" action="/admin/skill" class="inline-form">
+    <form method="post" action="/admin/skill" class="inline-form"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
       <div class="field"><label for="srole">Role</label>
         <select id="srole" name="role_id">{% for r in roles %}<option value="{{ r.id }}">{{ r.name }}</option>{% endfor %}</select></div>
       <div class="field"><label for="sname">Skill</label><input id="sname" name="skill" list="skill-list" required>
@@ -26,7 +26,7 @@
 
   <section class="card">
     <h2>Add a resource</h2>
-    <form method="post" action="/admin/resource" class="inline-form">
+    <form method="post" action="/admin/resource" class="inline-form"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
       <div class="field"><label for="rskill">Skill</label>
         <select id="rskill" name="skill_id">{% for s in skills %}<option value="{{ s.id }}">{{ s.name }}</option>{% endfor %}</select></div>
       <div class="field"><label for="rtitle">Title</label><input id="rtitle" name="title" required></div>
@@ -44,7 +44,7 @@
       <tbody>
       {% for r in rows %}
         <tr><td>{{ r.role }}</td><td>{{ r.skill }}</td><td>{{ r.demand }}</td>
-          <td><form method="post" action="/admin/skill/delete">
+          <td><form method="post" action="/admin/skill/delete"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
             <input type="hidden" name="role_id" value="{{ r.role_id }}"><input type="hidden" name="skill_id" value="{{ r.skill_id }}">
             <button class="step-btn undo">Remove</button></form></td></tr>
       {% endfor %}
@@ -59,14 +59,14 @@
       <tbody>
       {% for r in resources %}
         <tr><td>{{ r.skill }}</td><td><a href="{{ r.url }}">{{ r.title }}</a></td><td><span class="tag tag-{{ r.cost }}">{{ r.cost }}</span></td>
-          <td><form method="post" action="/admin/resource/delete"><input type="hidden" name="id" value="{{ r.id }}"><button class="step-btn undo">Remove</button></form></td></tr>
+          <td><form method="post" action="/admin/resource/delete"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><input type="hidden" name="id" value="{{ r.id }}"><button class="step-btn undo">Remove</button></form></td></tr>
       {% endfor %}
       </tbody>
     </table></div>
   </section>
   <section class="card">
     <h2>Partner organizations</h2>
-    <form method="post" action="/admin/partner" class="inline-form">
+    <form method="post" action="/admin/partner" class="inline-form"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
       <div class="field"><label for="pname">Name</label><input id="pname" name="name" required></div>
       <div class="field"><label for="pweb">Website</label><input id="pweb" name="website" type="url"></div>
       <div class="field"><label for="pdesc">Description</label><input id="pdesc" name="description"></div>
@@ -78,7 +78,7 @@
       <thead><tr><th>Partner</th><th>Roles</th><th></th></tr></thead>
       <tbody>{% for p in partners %}
         <tr><td>{{ p.name }}</td><td>{{ p.roles }}</td>
-          <td><form method="post" action="/admin/partner/delete"><input type="hidden" name="id" value="{{ p.id }}"><button class="step-btn undo">Remove</button></form></td></tr>
+          <td><form method="post" action="/admin/partner/delete"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><input type="hidden" name="id" value="{{ p.id }}"><button class="step-btn undo">Remove</button></form></td></tr>
       {% endfor %}</tbody>
     </table></div>
   </section>

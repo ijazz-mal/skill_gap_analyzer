@@ -1,15 +1,22 @@
 import sqlite3
 import json
+import os
 from flask import Flask, render_template, request, redirect, session, abort
 from gap import compute_gaps, load_roles
 from db import get_db, init_db
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime, timezone
 from functools import wraps
-import os
+from flask_wtf.csrf import CSRFProtect
+
 
 app = Flask(__name__)
 app.secret_key = os.environ.get("SECRET_KEY", "dev-only-key")
+app.config.update(
+    SESSION_COOKIE_SAMESITE="Lax",
+    SESSION_COOKIE_SECURE="SECRET_KEY" in os.environ,
+)
+csrf = CSRFProtect(app)
 init_db()
 READY_THRESHOLD = 85
 
@@ -68,12 +75,16 @@ def profile():
     for role_name, items in roles.items():
         for s in items:
             skill_roles.setdefault(s["skill"], []).append(role_name)
+    skill_roles = {}
+    for role_name, items in roles.items():
+        for s in items:
+            skill_roles.setdefault(s["skill"], []).append(role_name)
     all_skills = sorted(skill_roles)
-
     return render_template(
         "profile.html",
         roles=roles,
         all_skills=all_skills,
+        skill_roles=skill_roles,
         saved=saved,
         saved_skills=saved_skills,
         error=error,
@@ -446,4 +457,4 @@ def admin_delete_partner():
     return redirect("/admin")
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=os.environ.get("FLASK_DEBUG") == "1")
