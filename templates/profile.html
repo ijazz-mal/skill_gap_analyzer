@@ -3,7 +3,7 @@
 {% block content %}
 <main class="page">
   <h1>Your profile</h1>
-  <form method="post" class="card"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+  <form method="post" class="card profile-form"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
     {% if error %}
     <p class="error" role="alert">{{ error }}</p>
     {% endif %}
