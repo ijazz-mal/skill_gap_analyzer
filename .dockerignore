@@ -1,0 +1,5 @@
+venv
+app.db
+.git
+__pycache__
+*.pyc

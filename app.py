@@ -16,9 +16,50 @@ app.config.update(
     SESSION_COOKIE_SAMESITE="Lax",
     SESSION_COOKIE_SECURE="SECRET_KEY" in os.environ,
 )
+
 csrf = CSRFProtect(app)
 init_db()
 READY_THRESHOLD = 85
+
+def ensure_admin():
+    email = os.environ.get("ADMIN_EMAIL", "").strip().lower()
+    password = os.environ.get("ADMIN_PASSWORD", "")
+    if not email or not password:
+        return
+    conn = get_db()
+    if conn.execute("SELECT 1 FROM users WHERE email = ?", (email,)).fetchone() is None:
+        conn.execute(
+            "INSERT INTO users (name, email, password_hash, is_admin) VALUES (?, ?, ?, 1)",
+            ("Admin", email, generate_password_hash(password)),
+        )
+        conn.commit()
+    conn.close()
+
+
+def ensure_demo():
+    email = os.environ.get("DEMO_EMAIL", "").strip().lower()
+    password = os.environ.get("DEMO_PASSWORD", "")
+    if not email or not password:
+        return
+    conn = get_db()
+    if conn.execute("SELECT 1 FROM users WHERE email = ?", (email,)).fetchone() is None:
+        cur = conn.execute(
+            "INSERT INTO users (name, email, password_hash) VALUES (?, ?, ?)",
+            ("Demo Graduate", email, generate_password_hash(password)),
+        )
+        conn.execute(
+            """INSERT INTO profiles
+                   (user_id, degree, institution, graduation_year, interests, target_role, skills)
+               VALUES (?, ?, ?, ?, ?, ?, ?)""",
+            (cur.lastrowid, "BSc Economics", "Demo University", 2025,
+             "Data and analytics", "Data Analyst", json.dumps(["Excel", "Communication"])),
+        )
+        conn.commit()
+    conn.close()
+
+
+ensure_admin()
+ensure_demo()
 
 @app.route("/")
 def home():
